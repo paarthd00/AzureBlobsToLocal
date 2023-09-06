@@ -1,5 +1,5 @@
 import { BlobServiceClient, StorageSharedKeyCredential } from "@azure/storage-blob";
-import path, { join } from "path";
+import { join } from "path";
 import fs from 'fs';
 import dotenv from 'dotenv';
 
@@ -7,7 +7,7 @@ dotenv.config()
 
 const fsPromises = fs.promises;
 
-const account = process.env.ACCOUNT;
+const account = process.env.ACCOUNT_NAME;
 
 const accountKey = process.env.ACCOUNT_KEY;
 
