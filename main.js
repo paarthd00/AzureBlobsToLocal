@@ -18,7 +18,7 @@ const blobServiceClient = new BlobServiceClient(
 const containerName = process.env.CONTAINER_NAME;
 const directoryName = "backup"
 
-async function main() {
+async function downloadBlobs() {
     const containerClient = blobServiceClient.getContainerClient(containerName);
     const blobs = containerClient.listBlobsFlat();
 
@@ -31,11 +31,11 @@ async function main() {
 
 if (!fs.existsSync(directoryName)) {
     fsPromises.mkdir(directoryName).then(() => {
-        main();
+        downloadBlobs();
     }).catch((err) => {
         throw new Error(`Failed to create backup`);
     });
 } else {
-    main();
+    downloadBlobs();
 }
 
